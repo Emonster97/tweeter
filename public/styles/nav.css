@@ -1,0 +1,34 @@
+
+
+nav {
+  position: relative;
+  padding: 0 1.5em;
+  max-height: 120px;
+  height: 120px;
+  width: 100vw;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.tweeter {
+  margin-top: 44px;
+  font-family: 'Bungee', cursive;
+  font-size: 42px;
+}
+
+.navAside {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  margin-top: 25px;
+}
+.navAside p {
+    margin: 0;
+}
+
+.navAside span {
+  text-align: center;
+  color: red;
+}
