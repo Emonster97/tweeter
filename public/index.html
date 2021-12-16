@@ -22,6 +22,7 @@
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   </head>
 
   <body>
@@ -34,28 +35,84 @@
     </aside>
     </nav>
 
-    <header>
+    <header class="navHeader">
       <div class="avatar">
           <img src="/images/profile-hex.png"> 
       </div>
       <br>
       <div>
-          <h2>Your Name</h2>
+          <h2>Wilfred Emonts</h2>
       </div>
   </header>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
+        <h2 style="text-align: center;">Start where you are. Use what you have. Do what you can. - Arthur Ashe</h2>
         <form action="/tweets/" method="post">
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text"></textarea>
-          <div>
+          <div class="newTweet">
+            <label for="tweet-text">What are you humming about?</label>
+            <textarea rows="1" name="text" id="tweet-text"></textarea>
+          </div>
+          <div class="pls">
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+      </section>
+
+      <section class="ogTweets">
+        <article>
+          <header>
+            <span><img src="https://i.imgur.com/73hZDYK.png"><span style="margin-left: 10px">Newton</span></span>
+            <address>@Sir Issac</address> 
+          </header>
+          <p>
+            If I have seen further it is by standing on the shoulders of giants
+          </p>
+          <footer>
+            10 days 
+            <div>
+            <i class="fas fa-retweet"></i>
+            <i class="fas fa-flag"></i>
+            <i class="fas fa-heart"></i>
+          </div>
+          </footer>
+        </article>
+        <article>
+          <header>
+            <span><img src="https://i.imgur.com/73hZDYK.png"><span style="margin-left: 10px">Tom Hanks</span></span>
+            <address>@Forest Gump</address> 
+          </header>
+          <p>
+            Life is like a box of chocolates, you never know what you're going to get.
+          </p>
+          <footer>
+            14 days 
+            <div>
+            <i class="fas fa-retweet"></i>
+            <i class="fas fa-flag"></i>
+            <i class="fas fa-heart"></i>
+          </div>
+          </footer>
+        </article>
+        <article>
+          <header>
+            <span><img src="https://i.imgur.com/73hZDYK.png"><span style="margin-left: 10px">Wilfred Emonts</span></span>
+            <address>@Emonster97</address> 
+          </header>
+          <p>
+            If you build a man a fire he stays warm for a day, set a man on fire and he will be warm for the rest of his life.
+          </p>
+          <footer>
+            22 days 
+            <div>
+            <i class="fas fa-retweet"></i>
+            <i class="fas fa-flag"></i>
+            <i class="fas fa-heart"></i>
+            </div>
+          </footer>
+        </article>
       </section>
     </main>
   </body>

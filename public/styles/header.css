@@ -1,11 +1,13 @@
-header {
+header.navHeader {
   height: 400px;
-  width: 100%;
+  width: 100%;  
   display: flex;
   flex-direction: column;
   background-color: orange;
   justify-content: center;
   align-items: center;
   background-image: url(/images/beige-paper.png);
+  margin-top: 120px;
+  position: relative;
 }
 

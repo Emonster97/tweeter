@@ -1,7 +1,9 @@
 
 
 nav {
-  position: relative;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
   padding: 0 1.5em;
   max-height: 120px;
   height: 120px;
