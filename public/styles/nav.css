@@ -14,7 +14,7 @@ nav {
   justify-content: space-between;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) { nav
+@media only screen and (min-width: 768px) and (max-width: 1023px) { nav
   {
     background-color: orange;
     background-image: url(/images/beige-paper.png);

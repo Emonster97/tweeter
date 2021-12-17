@@ -4,20 +4,20 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready(function(){
+$(document).ready(function() {
 
   const loadTweets = function() {
-    $.getJSON( "/tweets", function( data ) {
+    $.getJSON("/tweets", function(data) {
       let arr = [];
-      for (d in data) {
+      for (let d in data) {
         arr.push(data[d]);
       }
       
-     renderTweets(arr); 
-    }); 
-  }
+      renderTweets(arr);
+    });
+  };
   
-  const escape = function (str) {
+  const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
@@ -32,17 +32,17 @@ $(document).ready(function(){
     
     if (tweetText === "" || tweetText === null) {
       $('#error').slideDown(300);
-        $('#error').show();
-        $('#error').text("Error, your tweet is empty!");
-        return;
+      $('#error').show();
+      $('#error').text("Error, your tweet is empty!");
+      return;
     }
 
     if (tweetText.length > 140) {
       $('#error').slideDown(300);
-        $('#error').show();
-        $('#error').text("Error, your tweet is too long!");
-        return;
-   }
+      $('#error').show();
+      $('#error').text("Error, your tweet is too long!");
+      return;
+    }
 
     await $.post("/tweets", $(this).serialize());
     
@@ -59,14 +59,14 @@ $(document).ready(function(){
     // calls createTweetElement for each tweet
     // takes return value and appends it to the tweets container
     $('#tweets-container').empty();
-    for (tweet of tweets) {
+    for (let tweet of tweets) {
       $('#tweets-container').append(createTweetElement(tweet));
     }
-  }
+  };
 
 
-const createTweetElement = function(tweetData) {
-const $tweet = $(`<article>
+  const createTweetElement = function(tweetData) {
+    const $tweet = $(`<article>
 <header>
   <span><img src="${tweetData.user.avatars}"><span style="margin-left: 10px">${tweetData.user.name}</span></span>
   <address>${tweetData.user.handle}</address> 
@@ -83,8 +83,8 @@ ${escape(tweetData.content.text)}
   </div>
 </footer>
 </article>`);
-return $tweet
-}
+    return $tweet;
+  };
 
-loadTweets();
+  loadTweets();
 });
