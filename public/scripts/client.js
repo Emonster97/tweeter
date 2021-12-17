@@ -4,53 +4,60 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// Test / driver code (temporary). Eventually will get this from the server.
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-  "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-  "created_at": 1461116232227
-}
-
 $(document).ready(function(){
 
+  const loadTweets = function() {
+    $.getJSON( "/tweets", function( data ) {
+      let arr = [];
+      for (d in data) {
+        arr.push(data[d]);
+      }
+      
+     renderTweets(arr); 
+    }); 
+  }
+  
+
+  $("#tweetButton").submit(function(event) {
+    event.preventDefault(); 
+    $.post("/tweets", $(this).serialize());
+    alert( "Handler for .submit() called." );
+  });
+
+
+
   // jQuery methods go here...
+  const renderTweets = function(tweets) {
+    // loops through tweets
+    // calls createTweetElement for each tweet
+    // takes return value and appends it to the tweets container
+    console.log(tweets);
+    for (tweet of tweets) {
+      $('#tweets-container').append(createTweetElement(tweet));
+    }
+  }
 
 
-const createTweetElement = function() {
-const $tweet = $(`<article class="tweet">Hello world</article>`);
+const createTweetElement = function(tweetData) {
+const $tweet = $(`<article>
+<header>
+  <span><img src="${tweetData.user.avatars}"><span style="margin-left: 10px">${tweetData.user.name}</span></span>
+  <address>${tweetData.user.handle}</address> 
+</header>
+<p>
+${tweetData.content.text}
+</p>
+<footer>
+  ${timeago.format(tweetData.created_at)}
+  <div>
+    <i class="fas fa-retweet"></i>
+    <i class="fas fa-flag"></i>
+    <i class="fas fa-heart"></i>
+  </div>
+</footer>
+</article>`);
 return $tweet
 }
 
-/*
-  <header>
-            <span><img src="https://i.imgur.com/73hZDYK.png"><span style="margin-left: 10px">Wilfred Emonts</span></span>
-            <address>@Emonster97</address> 
-          </header>
-          <p>
-            If you build a man a fire he stays warm for a day, set a man on fire and he will be warm for the rest of his life.
-          </p>
-          <footer>
-            22 days 
-            <div>
-            <i class="fas fa-retweet"></i>
-            <i class="fas fa-flag"></i>
-            <i class="fas fa-heart"></i>
-            </div>
-          </footer>
-        </article>
-*/
-
-
-const $tweet = createTweetElement(tweetData);
-
-
-// Test / driver code (temporary)
-console.log($tweet); // to see what it looks like
-$('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+loadTweets();
 });
