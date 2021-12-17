@@ -17,11 +17,37 @@ $(document).ready(function(){
     }); 
   }
   
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
 
-  $("#tweetButton").submit(function(event) {
-    event.preventDefault(); 
-    $.post("/tweets", $(this).serialize());
-    alert( "Handler for .submit() called." );
+  $("#tweetButton").submit(async function(event) {
+    event.preventDefault();
+    $('#error').slideUp(300, () => $('#error').hide());
+    
+
+    let tweetText = ($(this).find("#tweet-text").val());
+    
+    if (tweetText === "" || tweetText === null) {
+      $('#error').slideDown(300);
+        $('#error').show();
+        $('#error').text("Error, your tweet is empty!");
+        return;
+    }
+
+    if (tweetText.length > 140) {
+      $('#error').slideDown(300);
+        $('#error').show();
+        $('#error').text("Error, your tweet is too long!");
+        return;
+   }
+
+    await $.post("/tweets", $(this).serialize());
+    
+    loadTweets();
+    $(this).find("#tweet-text").val("");
   });
 
 
@@ -31,7 +57,7 @@ $(document).ready(function(){
     // loops through tweets
     // calls createTweetElement for each tweet
     // takes return value and appends it to the tweets container
-    console.log(tweets);
+    $('#tweets-container').empty();
     for (tweet of tweets) {
       $('#tweets-container').append(createTweetElement(tweet));
     }
@@ -45,7 +71,7 @@ const $tweet = $(`<article>
   <address>${tweetData.user.handle}</address> 
 </header>
 <p>
-${tweetData.content.text}
+${escape(tweetData.content.text)}
 </p>
 <footer>
   ${timeago.format(tweetData.created_at)}

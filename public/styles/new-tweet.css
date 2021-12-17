@@ -69,9 +69,20 @@ section article {
  section article:hover {
    box-shadow: 5px 10px black;
  }
-
  
 
  .fas:hover {
    color: yellow;
+ }
+
+ #error {
+    display: none;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding: 15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('https://i.imgur.com/GnyDvKN.png');
  }
