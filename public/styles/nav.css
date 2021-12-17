@@ -12,8 +12,15 @@ nav {
   color: #FFFFFF;
   display: flex;
   justify-content: space-between;
-  
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) { nav
+  {
+    background-color: orange;
+    background-image: url(/images/beige-paper.png);
+   }
+ }
+
 .tweeter {
   margin-top: 44px;
   font-family: 'Bungee', cursive;
