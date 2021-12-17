@@ -48,6 +48,7 @@ $(document).ready(function(){
     
     loadTweets();
     $(this).find("#tweet-text").val("");
+    $(".counter").text("140");
   });
 
 

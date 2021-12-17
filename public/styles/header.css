@@ -8,6 +8,6 @@ header.navHeader {
   align-items: center;
   background-image: url(/images/beige-paper.png);
   margin-top: 120px;
-  position: relative;
+  z-index: auto;
 }
 
