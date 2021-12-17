@@ -6,6 +6,7 @@
 
 $(document).ready(function() {
 
+  //Loads up the current roster of tweets, calls them to be rendered
   const loadTweets = function() {
     $.getJSON("/tweets", function(data) {
       let arr = [];
@@ -17,12 +18,14 @@ $(document).ready(function() {
     });
   };
   
+  //escape function for string querys
   const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
+  //Tweet button, feeds the counter character data and posts the new tweet to tweets, then calls the loadTweets to render the tweets again with the new one added, also contains relevant error messages
   $("#tweetButton").submit(async function(event) {
     event.preventDefault();
     $('#error').slideUp(300, () => $('#error').hide());
@@ -52,8 +55,7 @@ $(document).ready(function() {
   });
 
 
-
-  // jQuery methods go here...
+//adds the tweet to the tweet roster to be loaded by loadTweets
   const renderTweets = function(tweets) {
     // loops through tweets
     // calls createTweetElement for each tweet
@@ -64,7 +66,7 @@ $(document).ready(function() {
     }
   };
 
-
+//creates the tweet so that it is displayed on the page properly
   const createTweetElement = function(tweetData) {
     const $tweet = $(`<article>
 <header>
