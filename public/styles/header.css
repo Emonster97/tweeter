@@ -1,4 +1,5 @@
 header.navHeader {
+  min-width: 400px;
   height: 400px;
   width: 100%;  
   display: flex;
@@ -7,7 +8,11 @@ header.navHeader {
   justify-content: center;
   align-items: center;
   background-image: url(/images/beige-paper.png);
-  margin-top: 120px;
-  z-index: auto;
 }
 
+@media only screen and (min-width: 768px) and (max-width: 1024px) { header.navHeader
+   {
+     margin-top: 120px;
+     width: 100%;
+    }
+  }
