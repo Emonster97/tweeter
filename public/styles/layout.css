@@ -24,7 +24,8 @@ html {
   }
   header.navHeader {
     z-index: auto; 
-    margin: 200px 100px;  
+    margin: 200px 100px; 
+    padding: 1em; 
   }
   header {
     flex: 2;
@@ -53,7 +54,7 @@ body {
   visibility: hidden;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   #secretQuote {
     visibility: visible;
   }

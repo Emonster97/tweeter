@@ -11,7 +11,7 @@ $(document).ready(function() {
     $.getJSON("/tweets", function(data) {
       let arr = [];
       for (let d in data) {
-        arr.push(data[d]);
+        arr.unshift(data[d]);
       }
       
       renderTweets(arr);
@@ -68,23 +68,25 @@ $(document).ready(function() {
 
 //creates the tweet so that it is displayed on the page properly
   const createTweetElement = function(tweetData) {
-    const $tweet = $(`<article>
-<header>
-  <span><img src="${tweetData.user.avatars}"><span style="margin-left: 10px">${tweetData.user.name}</span></span>
-  <address>${tweetData.user.handle}</address> 
-</header>
-<p>
-${escape(tweetData.content.text)}
-</p>
-<footer>
-  ${timeago.format(tweetData.created_at)}
-  <div>
-    <i class="fas fa-retweet"></i>
-    <i class="fas fa-flag"></i>
-    <i class="fas fa-heart"></i>
-  </div>
-</footer>
-</article>`);
+    const $tweet = $(`
+      <article>
+          <header>
+            <div>
+              <img src="${tweetData.user.avatars}">
+              <span style="margin-left: 10px"> ${tweetData.user.name}</span>
+            </div>
+            <span>${tweetData.user.handle}</span> 
+          </header>
+          <p>${escape(tweetData.content.text)}</p>
+          <footer>
+            <span>${timeago.format(tweetData.created_at)}</span>
+            <div>
+              <i class="fas fa-retweet"></i>
+              <i class="fas fa-flag"></i>
+              <i class="fas fa-heart"></i>
+            </div>
+          </footer>
+      </article>`);
     return $tweet;
   };
 

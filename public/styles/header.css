@@ -1,6 +1,6 @@
 header.navHeader {
+  max-height: 500px;
   min-width: 400px;
-  height: 400px;
   width: 100%;  
   display: flex;
   flex-direction: column;
@@ -10,8 +10,8 @@ header.navHeader {
   background-image: url(/images/beige-paper.png);
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) { header.navHeader
-   {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+   header.navHeader {
      height: auto;
      margin-top: 120px;
      width: 100%;
